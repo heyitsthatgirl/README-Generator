@@ -1,15 +1,16 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
   
-  if(license !== null){
-    return `##License
-    
-    This app has the following license:
-    
-    `;
+  // If license is defined as anything but 'none', a template literal is returned containing the badge image 
+  // that corresponds with the chosen license
+  if(license !== 'none'){
+    return `[![License Badge](https://img.shields.io/badge/License-${license}-blue.svg)`
   }
-//below is my original code idea that was scrapped
+  // otherwise, an empty string is returned
+  return '';
+
+
+//Below is my original code idea that was scrapped
 // const {license} = userInput
 //   let licenseChoice = {
 //     MIT: `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
@@ -23,13 +24,19 @@ function renderLicenseBadge(license) {
 // renderLicenseLink(licenseBadge);
 }
 
-// TODO: Create a function that returns the license link
+// Function that returns the license link for the table of contents
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
 
+  // If license is defined as anything but 'none', 
+  // a template literal is returned containing the link for the table of contents 
+  if(license !== 'none'){
+    return `[License](#license)`;
+  }
+  // otherwise, an empty string is returned
+  return '';
 
-
-//scrapped code
+//Scrapped code
 // if(licenseBadge === MIT){
 //   licenseLink = `https://opensource.org/licenses/MIT`;
 // } else{
@@ -39,13 +46,22 @@ function renderLicenseLink(license) {
 
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Function that returns the license section of README
 function renderLicenseSection(license) {
 
-
-
-  //scrapped code
+  // If license isn't 'none' then a template literal is returned containing the license section
+  if(license !== 'none'){
+    return `
+  ## License
+    
+  This app is licensed with the following:
+    
+`
+  }
+  // otherwise an empty string is returned
+  return '';
+}
+// Scrapped code
 // let licenseSection = 
 // `## License <span id="License">
 // ${licenseBadge}
@@ -53,70 +69,73 @@ function renderLicenseSection(license) {
 // `;
 // generateMarkdown(licenseSection);
 //store the template literal in a variable?
-}
 
-// TODO: Create a function to generate markdown for README
+// Function to render a link to the credits section
+// function renderCreditsLink(collabs) {
+//   if(collabs !== null) {
+//     return `[Credits](#credits)`;
+//   }
+// }
+
+// // Function to provide a credits section if the user adds details about collaborations or third-party apps
+// function renderCreditsSection(collabs) {
+//   if(collabs !== null){
+//     return `## Credits
+    
+//     ${collabs}
+    
+//     `;
+//   }
+//   return '';
+// }
+
+// Function to generate markdown for README
 function generateMarkdown(data) {
 
-return `## Table of Contents
-    
- <ul>
- <li>
-    <a href="#Description">Description</a>
-  </li>
-  <li>
-    <a href="#Installation">Installation</a> 
-  </li>
-  <li>
-    <a href="#Usage">Usage</a>
-  </li>
-  <li>
-    <a href="#Credits">Credits</a>
-  </li>
-  <li>
-    <a href="#Questions">Questions</a>
-  </li>
-  <li>
-  <a href="#License">License</a>
-</li>
-    </ul>
-    
-## Description <span id="Description">
+return `
+# ${data.title}
 
-    The motivation behind the creation of ${data.title} was ${data.motive}
-    Now, users of this app can ${data.solution}
-    During the bulding process I learned ${data.lessons}
-    Something that I think stands out about this app is ${data.standouts}
+## Description
 
-## Installation <span id="Installation">
+${data.description}
 
-    To install ${data.title}:
-    
-    ${data.install}
-    
-## Usage <span id="Usage">
 
-    To use ${data.title}:
-    
-    ${data.use}
+## Table of Contents
 
-<img src="${data.image}"/>
-    
-## Credits <span id="Credits">
+[Installation](#installation)
 
-    ${data.collabs}
-    ${data.assets}
+[Usage](#usage)
 
-## Questions <span id="Questions">
-    
-    To ask questions about this app, please contact me at:
-<a href="https://github.com/${data.contact}">github.com/${data.contact}</a>
-    
-## License <span id="License">
+${renderLicenseLink(data.license)}
 
-    ${data.license}
+[Contributing](#contributing)
+
+[Questions](#questions)
+
     
-    `;
+## Installation
+    
+${data.install}
+    
+## Usage
+    
+${data.use}
+
+${renderLicenseSection(data.license)}
+
+${renderLicenseBadge(data.license)}
+    
+## Contributing
+
+The repository for this app can be found [here](https://github.com/${data.user}/${data.repo}).
+
+For information on how to contribute to a project through forking, please visit the 
+GitHub documentation on [Contributing to projects through forking](https://docs.github.com/en/get-started/quickstart/contributing-to-projects).
+
+## Questions
+    
+To ask additional questions about this app, please contact me at ${data.contact}.
+`;
 }
    
 

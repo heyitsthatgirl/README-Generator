@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application
 const inquirer = require("./utils/node_modules/inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
+// Array of questions for user input
 const questions = [
   {
     type: "input",
@@ -12,66 +12,43 @@ const questions = [
   },
   {
     type: "input",
-    message: "Your motivation for creating this app was to:",
-    name: "motive",
+    message: "Please provide a brief description of your project:",
+    name: "description",
   },
   {
     type: "input",
-    message: "Now users of your app are able to:",
-    name: "solution",
-  },
-  {
-    type: "input",
-    message: "While bulding your app you learned:",
-    name: "lessons",
-  },
-  {
-    type: "input",
-    message: "Something that stands out about your app is:",
-    name: "standouts",
-  },
-  {
-    type: "input",
-    message: "To install this app:",
+    message: "How to install this app:",
     name: "install",
   },
   {
     type: "input",
-    message: "To use this app:",
+    message: "Basic instructions on how to use this app:",
     name: "use",
-  },
-  {
-    type: "input",
-    message:
-      "If you would like to include an image of your app in use, please provide a full path route or link to your image now:",
-    name: "image",
-  },
-  {
-    type: "input",
-    message:
-      "Please provide any details about who you collaborated with on this app:",
-    name: "collabs",
-  },
-  {
-    type: "input",
-    message:
-      "Please provide any details about third party assets that you used:",
-    name: "assets",
   },
   {
     type: "list",
     message: "What type of license would you like to give this app?",
     name: "license",
-    choices: ["MIT", "Apache", "GPLv2", "GPLv3", "Other", "No License"],
+    choices: ["MIT", "Apache_2.0", "GPLv3", 'WTFPL', 'none'],
   },
   {
     type: "input",
-    message: "Your GitHub username is:",
+    message: "What is your GitHub username?",
+    name: "user",
+  },
+  {
+    type: "input",
+    message: "What is the name of the repo for this app?",
+    name: "repo",
+  },
+  {
+    type: "input",
+    message: "Please enter your email address:",
     name: "contact",
   },
 ];
 
-// TODO: Create a function to write README file
+// Function to write README file
 function writeFile(fileName, data) {
   fs.writeFile(fileName, data, (err) => {
     if (err) {
@@ -81,11 +58,13 @@ function writeFile(fileName, data) {
 });
 }
 
-// TODO: Create a function to initialize app
+// Function to initialize app
 async function init() {
 
+  // the value of userInput is defined once inquirer has finished its prompts
   const userInput = await inquirer.prompt(questions);
   
+  // file is written using the template imported from generateMarkdown.js with userInput as the data
   writeFile("README.md", generateMarkdown(userInput), console.log(userInput));
 
 };
