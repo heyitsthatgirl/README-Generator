@@ -3,7 +3,7 @@
 
 ## Description
 
-This project was designed to take the pressure off of the user when they need to quicly create a README.md file for their project
+This app was created to take the pressure off of users who need to quickly create a simple and effective README for their projects.
 
 
 ## Table of Contents
@@ -21,11 +21,11 @@ This project was designed to take the pressure off of the user when they need to
     
 ## Installation
     
-Run npm i to install the necessary packages. This app uses npm, node.js, and inquirer.
+This app requires npm, node.js, and inquirer. Use git clone to clone the repo to a local folder. Run npm install from the command line to install the necessary packages.
     
 ## Usage
     
-Run node index.js and then follow the prompts until your file has been created
+From the command line run node index.js to initiate this app. Follow each of the prompts from inquirer and your README file will be created!
 
 
   ## License
