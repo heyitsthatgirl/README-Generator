@@ -27,9 +27,9 @@ This app requires npm, node.js, and inquirer. Use git clone to clone the repo to
     
 From the command line run node index.js to initiate this app. Follow each of the prompts from inquirer and your README file will be created!
 
-[![Screen Shot](Develop/assets/images/CLI.png)
+![Screen Shot](Develop/assets/images/CLI.png)
 
-[![Screen Shot](Develop/assets/images/README.png)
+![Screen Shot](Develop/assets/images/README.png)
 
 
   ## License
@@ -50,3 +50,6 @@ GitHub documentation on [Contributing to projects through forking](https://docs.
 ## Questions
     
 To ask additional questions about this app, please contact me at hopemansfield@gmail.com.
+
+
+This README was created using the README Generator! Screenshots were added after creation. 
