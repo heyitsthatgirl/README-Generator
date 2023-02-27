@@ -27,6 +27,10 @@ This app requires npm, node.js, and inquirer. Use git clone to clone the repo to
     
 From the command line run node index.js to initiate this app. Follow each of the prompts from inquirer and your README file will be created!
 
+[![Screen Shot](Develop/assets/images/CLI.png)
+
+[![Screen Shot](Develop/assets/images/README.png)
+
 
   ## License
     
